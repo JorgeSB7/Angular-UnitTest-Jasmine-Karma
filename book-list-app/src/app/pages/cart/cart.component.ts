@@ -21,7 +21,8 @@ export class CartComponent implements OnInit {
     this.listCartBook = this._bookService.getBooksFromCart();
     this.totalPrice = this.getTotalPrice(this.listCartBook);
   }
-
+  
+  // Devuelve el precio total de la cesta de compra
   public getTotalPrice(listCartBook: Book[]): number {
     let totalPrice = 0;
     listCartBook.forEach((book: Book) => {
@@ -30,6 +31,7 @@ export class CartComponent implements OnInit {
     return totalPrice;
   }
 
+  // Incrementa o disminuye en 1 la cantidad existente de un libro
   public onInputNumberChange(action: string, book: Book): void {
     const amount = action === 'plus' ? book.amount + 1 : book.amount - 1;
     book.amount = Number(amount);
